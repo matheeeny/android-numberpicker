@@ -16,6 +16,7 @@
 
 package net.simonvt.numberpicker;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -92,6 +93,7 @@ import java.util.Locale;
  * </p>
  */
 //@Widget
+@SuppressLint({ "NewApi", "DefaultLocale" })
 public class NumberPicker extends LinearLayout {
 
     /**
@@ -369,10 +371,10 @@ public class NumberPicker extends LinearLayout {
      */
     private float mLastDownEventY;
 
-    /**
-     * The time of the last down event.
-     */
-    private long mLastDownEventTime;
+//    /**
+//     * The time of the last down event.
+//     */
+//    private long mLastDownEventTime;
 
     /**
      * The Y position of the last down or move event.
@@ -815,7 +817,7 @@ public class NumberPicker extends LinearLayout {
                 removeAllCallbacks();
                 mInputText.setVisibility(View.INVISIBLE);
                 mLastDownOrMoveEventY = mLastDownEventY = event.getY();
-                mLastDownEventTime = event.getEventTime();
+//                mLastDownEventTime = event.getEventTime();
                 mIngonreMoveEvents = false;
                 mShowSoftInputOnTap = false;
                 // Handle pressed state before any state change.
@@ -899,8 +901,8 @@ public class NumberPicker extends LinearLayout {
                 } else {
                     int eventY = (int) event.getY();
                     int deltaMoveY = (int) Math.abs(eventY - mLastDownEventY);
-                    long deltaTime = event.getEventTime() - mLastDownEventTime;
-                    long tapTimeout = ViewConfiguration.getTapTimeout();
+//                    long deltaTime = event.getEventTime() - mLastDownEventTime;
+//                    long tapTimeout = ViewConfiguration.getTapTimeout();
                     if (deltaMoveY <= mTouchSlop) { // && deltaTime < ViewConfiguration.getTapTimeout()) {
                         if (mShowSoftInputOnTap) {
                             mShowSoftInputOnTap = false;
